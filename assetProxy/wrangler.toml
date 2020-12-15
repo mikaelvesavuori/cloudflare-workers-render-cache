@@ -1,0 +1,9 @@
+type = "webpack"
+name = "asset-proxy"
+account_id = "YOUR_ACC_ID"
+zone_id = "YOUR_ZONE_ID"
+route = "domain.tld/assets/*"
+# workers_dev = true  <---- Use this instead of "route" if you want to use {FUNCTION_NAME}.{YOUR_CF_DOMAIN}.workers.dev
+webpack_config = "webpack.config.js"
+
+vars = { STORAGE_BUCKET_URL = "https://storage.googleapis.com/YOUR_BUCKET_NAME/" } # Example, could be any service
