@@ -35,9 +35,9 @@ async function renderCache(request) {
 }
 
 /**
- * @description TODO
+ * @description Helper to set header
  *
- * @param {*} status
+ * @param {number} status - Status code
  */
 const headers = (status = 200) => {
   return {
@@ -49,10 +49,10 @@ const headers = (status = 200) => {
 };
 
 /**
- * @description TODO
+ * @description Hash a string
  *
  * @see Reference: https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
- * @param {*} str
+ * @param {string} str - String to hash
  */
 function hash(str) {
   return str.split("").reduce((a, b) => {
@@ -62,8 +62,9 @@ function hash(str) {
 }
 
 /**
- * @description TODO
- * @param {*} hashKey
+ * @description Get key from KV
+ *
+ * @param {string} hashKey - The key's hash value
  */
 async function getFromCache(hashKey) {
   const data = await HTML_CACHE.get(hashKey);
@@ -72,10 +73,10 @@ async function getFromCache(hashKey) {
 }
 
 /**
- * @description TODO
+ * @description Get data
  *
- * @param {*} url
- * @param {*} hashKey
+ * @param {string} url - URL to request
+ * @param {string} hashKey - Hashed key
  */
 async function getData(url, hashKey) {
   const HEADERS = {
@@ -88,24 +89,25 @@ async function getData(url, hashKey) {
   };
 
   responseData = await fetch(url, HEADERS).then(res => res.text());
-  await cacheData(hashKey, responseData);
+  await cacheData(hashKey, responseData, 60);
   return responseData;
 }
 
 /**
- * @description TODO
+ * @description Cache data in KV
  *
- * @param {*} key
- * @param {*} data
+ * @param {string} key - asdf
+ * @param {string} data - asdf
+ * @param {number} ttlSeconds - asdf
  */
-async function cacheData(key, data) {
-  const TTL = 60; // Seconds from now
+async function cacheData(key, data, ttlSeconds) {
+  const TTL = ttlSeconds;
   await HTML_CACHE.put(key, JSON.stringify(data), { expirationTtl: TTL });
   console.log(`Finished putting new data in cache at key ${key}`);
 }
 
 /**
- * @description TODO
+ * @description Call render cache
  */
 addEventListener("fetch", event => {
   event.respondWith(renderCache(event.request));
