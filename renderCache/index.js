@@ -96,9 +96,9 @@ async function getData(url, hashKey) {
 /**
  * @description Cache data in KV
  *
- * @param {string} key - asdf
- * @param {string} data - asdf
- * @param {number} ttlSeconds - asdf
+ * @param {string} key - KV key
+ * @param {string} data - Data (HTML) to store
+ * @param {number} ttlSeconds - Time-to-live value in seconds
  */
 async function cacheData(key, data, ttlSeconds) {
   const TTL = ttlSeconds;
