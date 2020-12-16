@@ -17,7 +17,7 @@ The original context for this was (as alluded to above) to render cache SSR appl
 
 1. You request your site `https://my-amazing-site.dev/something`
 2. Because that URL has HTML that points to an image at `https://my-amazing-site.dev/assets/image.jpg`, the asset proxy edge worker will trigger (the exact path is set in `assetProxy/wrangler.toml` and the `route` field)
-3. The asset will be proxied from `https://awesome-cloud-provider.net/my-bucket-123/assets/image.jpg` because you specified `https://awesome-cloud-provider.net/my-bucket-123/` in xx and the `assetProxy/wrangler.toml` variable)
+3. The asset will be proxied from `https://awesome-cloud-provider.net/my-bucket-123/assets/image.jpg` because you specified `https://awesome-cloud-provider.net/my-bucket-123/` in `assetProxy/wrangler.toml` and the `STORAGE_BUCKET_URL` variable)
 
 ## Can I combine them to edge-cache proxied assets?
 
