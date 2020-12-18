@@ -31,7 +31,7 @@ I assume you have [Wrangler](https://github.com/cloudflare/wrangler) installed.
 
 You will need to provide both an endpoint URL (the site that you are going to cache), and an assets storage bucket path for the asset proxying.
 
-Make sure to rename set all the empty/dummy fields in `wrangler.toml` files to your own values.
+Make sure to rename/set all the empty/dummy fields in `wrangler.toml` files to your own values.
 
 ## Develop and test
 
